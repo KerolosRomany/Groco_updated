@@ -1,0 +1,23 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% block title %}
+    Email Verification
+{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{% static "account/verification.css" %}">
+{% endblock head %}
+{% block content %}
+    <div class="container">
+        <div class="forms">
+            <div class="form login">
+                <h1 style="color: #ff7800">Verify Your E-mail Address</h1>
+
+                <p>We have sent an e-mail to you for verification. Follow the link provided to finalize the signup
+                    process. If you
+                    do not see the verification e-mail in your main inbox, check your spam folder. Please contact us if
+                    you do not
+                    receive the verification e-mail within a few minutes.</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

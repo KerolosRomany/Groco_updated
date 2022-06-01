@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for object in object_list %}
+        <a href="{% url 'product:detail_product' slug = object.slug %}">
+            <img src="{{ object.get_thumbnail.imag.url }}" alt="{{ object.get_thumbnail.imag.url }}">
+           <h5>{{ object.name }}</h5>
+           <p>{{ object.sku }} | {{ object.price }}</p>
+        </a>
+    {% endfor %}
+
+    {% if is_paginated %}
+        {% if page_obj.has_previous %}
+             <a href="?page={{ page_obj.previous_page_number }}"> previous </a>
+        {% endif %}
+        <span>
+            page : {{ page_obj.number}} / {{page_obj.paginal}}
+        </span>
+         {% if page_obj.has_next %}
+             <a href="?page={{ page_obj.previous_page_number }}"> next </a>
+         {% endif %}
+{% endblock %}

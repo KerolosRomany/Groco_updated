@@ -1,0 +1,43 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% load i18n %}
+{% load account %}
+
+{% block title %}Confirm E-mail Address{% endblock title %}
+{% block head %}
+    <link rel="stylesheet" href="{% static "account/signin.css" %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="forms">
+            <div class="form login">
+                <span class="title">Confirm E-mail Address</span>
+
+                {% if confirmation %}
+
+                    {% user_display confirmation.email_address.user as user_display %}
+                    <br>
+                    <p>{% blocktrans with confirmation.email_address.email as email %}Please confirm that
+                        <a href="mailto:{{ email }}">{{ email }}</a> is an e-mail address for user {{ user_display }}
+                        .{% endblocktrans %}</p>
+
+                    <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+                        {% csrf_token %}
+                        <div class="input-field button">
+                            <input type="submit" value="Confirm">
+                        </div>
+                    </form>
+
+                {% else %}
+
+                    {% url 'account_email' as email_url %}
+
+                    <p>This e-mail confirmation link expired or is invalid. Please <a href="{{ email_url }}">issue a new
+                        e-mail confirmation request</a>.</p>
+
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

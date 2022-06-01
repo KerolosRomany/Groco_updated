@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {%for image in object.productimage_set.all %}
+    <div class = "carousel-item {% if forloop.counter0 == 0 %}active {% endif %}">
+    <img src = "{{ image.image.url }}" class = "d-block w-100" alt = "{{image.alt}}">
+    </div>
+{% endfor %}
+
+    <h1>{{ object.name }}</h1>
+    <p>Price: {{ object.price }}</p>
+    <p>Sku: {{ object.sku }}</p>
+    <p>Description: {{ object.description }}</p>
+    <p>Weight: {{ object.weight }}</p>
+    <p>Category: {{ object.category }}</p>
+    <p>brand: {{ object.brand }}</p>
+
+{% endblock %}

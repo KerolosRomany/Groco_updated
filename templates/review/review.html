@@ -1,0 +1,193 @@
+
+{% extends "account/base.html" %}
+{% load static %}
+{% load account %}
+{% block title %}Reviews{% endblock %}
+    {% block head %}
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static "product/style.css" %}">
+    {% endblock head %}
+    {% block content %}
+
+    <!-- header section starts  -->
+
+    <header class="header">
+
+        <a href="#" class="logo"> <i class="fas fa-shopping-basket"></i> groco </a>
+
+        <nav class="navbar">
+            <a href="index2.html">home</a>
+            <a href="index2.html">products</a>
+            <div class="dropdown">
+                <a onclick="myFunction()" class="dropbtn">categories</a>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="#">Vegitables</a>
+                    <a href="#">Fresh Fruits</a>
+                    <a href="#">Dairy Products</a>
+                    <a href="#">Fresh Meat</a>
+                </div>
+            </div>
+            <a href="#review">review</a>
+            <a href="blogs.html">blogs</a>
+        </nav>
+
+        <div class="icons">
+            <div class="fas fa-bars" id="menu-btn"></div>
+            <div class="fas fa-search" id="search-btn"></div>
+            <div class="fas fa-shopping-cart" id="cart-btn"></div>
+            <div class="fas fa-user" id="login-btn"></div>
+        </div>
+
+
+
+
+        <form action="" class="login-form">
+            <h3>User</h3>
+
+            <p>Update Profile <a href="../user_profile/user.html">click here</a></p>
+            <p><a href="../food/indexx.html">Sign Out</a></p>
+
+        </form>
+
+
+
+    </header>
+
+    <!-- header section ends -->
+
+    <!-- home section starts  -->
+
+    <section class="home" id="home">
+
+        <div class="content">
+            <h3>fresh and <span>organic</span> products for your</h3>
+            <p>Please note that this is a pain relief. It's Time for Our Freedom I'm Coming To Make The Season Except.</p>
+        </div>
+
+    </section>
+
+    <!-- home section ends -->
+
+
+    <!-- review section starts  -->
+
+    <section class="review" id="review">
+
+        <h1 class="heading"> customer's <span>review</span> </h1>
+
+        <div class="swiper review-slider">
+
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide box">
+                    <img src="{% static "images/pic-1.jpeg" %}" alt="">
+                    <p>Love the variety, so much better than a grocery store. The convenience if it being delivered is astounding when trying to work.</p>
+                    <h3>Kerolos</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+                    <img src="{% static "images/pic-2.jpeg" %}" alt="">
+                    <p>The quality of the produce is good. I like that I can customize the box and pick out items that I know will get eaten!</p>
+                    <h3>Abdalla</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+                    <img src="{% static "images/pic-3.jpeg" %}" alt="">
+                    <p>These really do extend the life of produce. I have been using them in the crisper drawers of my fridge and in the produce baskets.</p>
+                    <h3>Yassen</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+                    <img src="{% static "images/pic-4.jpeg" %}" alt="">
+                    <p>My partner and I have been using Fresh Harvest for over a year, and I can't imagine ever stopping! It has totally transformed our lives.</p>
+                    <h3>Jo</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- review section ends -->
+
+
+
+    <!-- footer section starts  -->
+
+    <section class="footer">
+
+        <div class="box-container">
+
+            <div class="box">
+                <h3> groco <i class="fas fa-shopping-basket"></i> </h3>
+                <p>We have organic food knowledge! #organicfoodknowledge</p>
+                <div class="share">
+                    <a href="#" class="fab fa-facebook-f"></a>
+                    <a href="#" class="fab fa-twitter"></a>
+                    <a href="#" class="fab fa-instagram"></a>
+                    <a href="#" class="fab fa-linkedin"></a>
+                </div>
+            </div>
+
+            <div class="box">
+                <h3>contact info</h3>
+                <a href="#" class="links"> <i class="fas fa-phone"></i> 0225586452 </a>
+                <a href="#" class="links"> <i class="fas fa-phone"></i> 01147837286 </a>
+                <a href="#" class="links"> <i class="fas fa-envelope"></i> FCAI@gmail.com </a>
+                <a href="#" class="links"> <i class="fas fa-map-marker-alt"></i> Cairo, Egypt - 400104 </a>
+            </div>
+
+
+            <div class="box">
+                <h3>newsletter</h3>
+                <p>subscribe for latest updates</p>
+                <input type="email" placeholder="your email" class="email">
+                <input type="submit" value="subscribe" class="btn">
+                <img src="{% static "images/payment.png" %}" alt="">
+            </div>
+
+        </div>
+
+        <div class="credit"> created by <span> FCAI STUDENTS</span> | all rights reserved </div>
+
+    </section>
+
+
+
+
+
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    
+    <script src="{% static "js/main.js" %}"></script>
+
+    {% endblock content %}

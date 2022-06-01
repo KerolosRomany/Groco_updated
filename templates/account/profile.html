@@ -1,0 +1,65 @@
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>update profile</title>
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static "account/profile.css" %}">
+
+</head>
+
+<body>
+{% if user_form.errors %}
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <div id="form_errors">
+            {% for key, value in user_form.errors.items %}
+                <strong>{{ value }}</strong>
+            {% endfor %}
+        </div>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+{% endif %}
+<div class="update-profile">
+    <form action="." method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {% if profile_form.avatar.value == '' %}
+            <img class="photo" src="{% static "images/default-avatar.png" %}" alt="">
+        {% else %}
+            <img class="photo" src="{{ profile_form.avatar.value }}" alt="">
+        {% endif %}
+        <div class="parent-div">
+            {{ profile_form.avatar }}
+        </div>
+
+        <div class="flex">
+            <div class="inputBox">
+                <span>{{ user_form.username.label }}</span>
+                {{ user_form.username }}
+                <span>{{ user_form.first_name.label }}</span>
+                {{ user_form.first_name }}
+                <span>{{ user_form.last_name.label }}</span>
+                {{ user_form.last_name }}
+            </div>
+            <div class="inputBox">
+                <span>Address</span>
+                {{ profile_form.address }}
+                <span>Mobile</span>
+                {{ profile_form.mobile }}
+            </div>
+        </div>
+
+        <button type="submit" name="update_profile" class="btn">update profile</button>
+        <a href="{% url "landing" %}" class="delete-btn">go back</a>
+    </form>
+
+</div>
+
+</body>
+
+</html>

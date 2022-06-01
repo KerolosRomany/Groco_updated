@@ -1,0 +1,69 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}
+    Create an account
+{% endblock title %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'account/signup.css' %}">
+{% endblock head %}
+
+{% block content %}
+    <div class="container">
+        <div class="forms">
+            <div class="form signup">
+                <span class="title">Registration</span>
+                <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+                    {% csrf_token %}
+                    {% if form.errors %}
+                        <ul>
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                    <li style="color: red">{{ error|escape }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                        </ul>
+                        {% for error in form.non_field_errors %}
+                            <div class="alert alert-error">
+                                <strong style="color: red">{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    <div class="input-field">
+                        {{ form.username }}
+                        <i class="uil uil-user"></i>
+                    </div>
+                    <div class="input-field">
+                        {{ form.email }}
+                        <i class="uil uil-envelope icon"></i>
+                    </div>
+                    <div class="input-field">
+                        {{ form.password1 }}
+                        <i class="uil uil-lock icon"></i>
+                    </div>
+                    <div class="input-field">
+                        {{ form.password2 }}
+                        <i class="uil uil-lock icon"></i>
+                    </div>
+                    {% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                    {% endif %}
+
+                    <div class="input-field button">
+                        <input id="sign" type="submit">
+                    </div>
+                </form>
+                <div class="login-signup">
+                    <p>Already have an account? <a href="{{ login_url }}">Sign In</a>
+                        .</p>
+                    <span class="text">Back To
+                        <a href="{% url "landing" %}" class="text login-link">Home Page</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}

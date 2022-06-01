@@ -1,0 +1,12 @@
+{% extends 'dashboard/base.html' %}
+
+{% block dashcontent %}
+        <a href="{% url 'dashboard:brand_dashboard:create_brand' %}">Create Brand</a>
+
+    {% for object in object_list %}
+        <div>
+            <p>{{ object.name }}</p>
+            <img src = "{{ object.image.url }}">
+        </div>
+    {% endfor %}
+{% endblock dashcontent %}

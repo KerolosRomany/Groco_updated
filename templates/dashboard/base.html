@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{%block content %}
+    <main id = " dashboard ">
+        <section class = " navigation ">
+            <a href="{% url 'dashboard:product_dashboard:product_list' %}">
+                Products
+                </a>
+            <a href="{% url 'dashboard:category_dashboard:category_list' %}">
+                Categories
+                </a>
+            <a href="{% url 'dashboard:brand_dashboard:list_brand' %}">
+                Brand
+                </a>
+            <a href="">
+                Orders
+                </a>
+        </section >
+
+        <section class = "dashboard-content ">
+            {% block dashcontent %}
+
+            {% endblock %}
+
+        </section>
+    </main>
+
+    {% endblock %}
+
+
