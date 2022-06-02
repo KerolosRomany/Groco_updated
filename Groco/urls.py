@@ -28,6 +28,7 @@ urlpatterns = [
     path('', product.views.landing, name='landing'),
     path('profile/', include("userprofile.urls")),
     path('products/', include('product.urls', namespace='product')),
+    path('checkout/', include('checkout.urls', namespace='checkout')),
 ]
 
 if settings.DEBUG:

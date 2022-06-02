@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404, render
 from django.template.response import TemplateResponse
 from django.views.generic import CreateView, UpdateView, ListView
 from product.models import Category
+from django.http import JsonResponse
 
 
 # Create your views here.
@@ -60,3 +61,13 @@ def category_detail(request, pk):
         'categories': categories
     }
     return render(request, './dashboard/category/detail.html', context)
+
+def delete_category(request,pk):
+    category = get_object_or_404(Category, pk = pk)
+    if category:
+        category.delete()
+        return JsonResponse({'message':'the category has been deleted successfully'}, status=200)
+    return JsonResponse({'message': 'this category instance does not exist'}, status=400)
+
+
+

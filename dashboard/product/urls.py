@@ -12,6 +12,6 @@ urlpatterns = [
     path('<int:pk>/create/image/', permession(views.create_image), name='create_image'),
     path('delete/image/<int:pk>', permession(views.delete_image), name='delete_image'),
 
-    path('delete/product/<int:pk>', permession(views.delete_product), name='delete_product'),
+    path('delete/<int:pk>', permession(views.delete_product), name='delete_product'),
     
 ]

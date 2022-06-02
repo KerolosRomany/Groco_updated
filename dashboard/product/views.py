@@ -12,7 +12,7 @@ from django.http import JsonResponse
 class CreateProduct(CreateView):
     model = Product
     template_name = "./dashboard/product/create.html"
-    fields = ['name', 'image']
+    fields = ['name']
 
     def form_valid(self, form):
         instance = form.save()

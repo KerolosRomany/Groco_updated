@@ -1,7 +1,8 @@
 from django.views.generic import CreateView, UpdateView, ListView
 from product.models import Brand
 from django.utils.text import slugify
-
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
 
 class CreateBrand(CreateView):
     model = Brand
@@ -31,3 +32,13 @@ class ListBrand(ListView):
     model = Brand
     template_name = "./dashboard/brand/list.html"
     fields = ['name', 'image']
+
+
+def delete_brand(request,pk):
+    brand = get_object_or_404(Brand, pk = pk)
+    if brand:
+        brand.delete()
+        return JsonResponse({'message':'the brand has been deleted successfully'}, status=200)
+    return JsonResponse({'message': 'this brand instance does not exist'}, status=400)
+
+
