@@ -1,12 +1,15 @@
 {% extends 'dashboard/base.html'%}
+{% load static %}
+
+
 
 {% block dashcontent %}
     <a href="{% url 'dashboard:product_dashboard:product_create' %}">Create Product</a>
     {% for object in object_list %}
         <div>
                 <a href="{% url 'dashboard:product_dashboard:product_update' pk=object.pk %}">{{ object.name }}</a>
-                <button  data-delete-url="{% url 'dashboard:product_dashboard:delete_image' pk = object.pk %}"   type="button" class="btn btn-primary delete-modal" data-toggle ="model" data-target = "#exampleModel">
-                    Delete
+                <button  data-delete-url="{% url 'dashboard:product_dashboard:delete_product' pk = object.pk %}"   type="button" class="btn btn-primary delete-modal" data-toggle ="model" data-target = "#exampleModel">
+                    Delete Product
                 </button>
                     
         </div>

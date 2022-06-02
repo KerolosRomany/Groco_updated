@@ -14,5 +14,9 @@
     <p>Weight: {{ object.weight }}</p>
     <p>Category: {{ object.category }}</p>
     <p>brand: {{ object.brand }}</p>
-
+    <form action="{% url 'products:add_product_to_checkout' pk=object.pk %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary">Add to cart</button>
+    </form>
 {% endblock %}

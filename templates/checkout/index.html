@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block conteet %}
+     <div class="container">
+         <div class="row">
+            {% if checkout_line %}
+                {% for foo in checkout_line %}
+                    <div>
+                        <p>{{ line }}[{{ line.product.sku }}]</p>
+                        <p>{{ line.quantity }} x {{ line.product.price }}$</p>
+                        <p>subtotal: {{ line.get_sub_total }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>Please add some product to your shopping cart</p>
+            {% endif %}
+         </div>
+     </div>
+
+{% endblock %}

@@ -39,8 +39,7 @@ class Brand(models.Model):
 
     def get_absolute_url(self):
         return reverse_lazy("dashboard:brand_dashboard:create_brand")
-
-
+    
 class Product(models.Model):
     name = models.CharField(max_length=225)
     description = models.TextField()
@@ -48,7 +47,7 @@ class Product(models.Model):
     weight = models.FloatField()
     sku = models.CharField(max_length=30, unique=True)
     stock = models.PositiveBigIntegerField()
-    brand = models.ForeignKey('Brand', on_delete=models.CASCADE)
+    brand = models.ForeignKey('Brand', on_delete=models.CASCADE,null=True)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     rate = models.Avg()
 

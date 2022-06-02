@@ -26,6 +26,7 @@ $(document).ready(function (){
             }
         }
     });
+    let $deleteButton = $('#delete-button');
     $('body').on('click','.delete-modal',function () {
         $deleteButton.attr('href', $(this).attr('data-delete-url'))
     });
