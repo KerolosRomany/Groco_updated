@@ -6,12 +6,19 @@ from phone_field import PhoneField
 
 
 # Create your models here.
+class PersonalInfo(models.Model):
+    street_address = models.CharField(max_length=225)
+    city_name = models.CharField(max_length=225)
+    notes_for_address = models.TextField(blank=True , null=True)
+    mobile = PhoneField(blank=True)
+
+    def __str__(self):
+        return "{}-{}-{}-{}".format(self.street_address,self.city_name,self.notes_for_address, self.mobile)
 
 
 class UserProfile(models.Model):
     user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE, related_name='profile')
-    address = models.CharField(max_length=450, blank=True)
-    mobile = PhoneField(blank=True, help_text='Enter mobile number')
+    user_info = models.ManyToManyField(PersonalInfo)
     avatar = models.ImageField(upload_to='profile_images/', blank=True)
 
     def __str__(self):

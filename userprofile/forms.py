@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.forms import ModelForm, models
 from phone_field import PhoneField
 
-from .models import UserProfile
+from .models import UserProfile, PersonalInfo
 
 
 class UpdateUserForm(forms.ModelForm):
@@ -32,3 +32,22 @@ class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ['avatar', 'mobile', 'address']
+
+
+class Shipping(forms.ModelForm):
+    class Meta:
+        model = PersonalInfo
+        fields = '__all__'
+
+
+class AnonymousShipping(forms.ModelForm):
+    email = forms.EmailField()
+
+
+class EditShippingAddress(forms.Form):
+    address = forms.ModelChoiceField(queryset=PersonalInfo.objects.none())
+
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user')
+        super(EditShippingAddress, self).__init__(*args, **kwargs)
+        self.fields['address'].queryset = UserProfile.objects.get(user=self.user).user_info.all()

@@ -1,14 +1,14 @@
- {% extends "account/base.html" %}
+{% extends "account/base.html" %}
 {% load static %}
 {% load account %}
 
 {% block title %}Products{% endblock %}
-    {% block head %}
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+{% block head %}
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="{% static "product/style2.css" %}">
-    {% endblock head %}
-    {% block content %}
+{% endblock head %}
+{% block content %}
     <header class="header">
         <a href="#" class="logo"> <i class="fas fa-shopping-basket"></i> groco </a>
         <nav class="navbar">
@@ -66,7 +66,7 @@
                     <span class="quantity">qty : 1</span>
                 </div>
             </div>
-            <div class="total"> total : $19.69/- </div>
+            <div class="total"> total : $19.69/-</div>
             <a href="#" class="btn">checkout</a>
         </div>
         <form action="" class="login-form">
@@ -81,542 +81,36 @@
 
         <div class="content">
             <h3>fresh and <span>organic</span> products for your</h3>
-            <p>Please note that this is a pain relief. It's Time for Our Freedom I'm Coming To Make The Season Except.</p>
+            <p>Please note that this is a pain relief. It's Time for Our Freedom I'm Coming To Make The Season
+                Except.</p>
         </div>
 
     </section>
 
     <section class="products" id="products">
 
-        <h1 class="heading"> our <span>products</span> </h1>
+        <h1 class="heading"> our <span>products</span></h1>
 
-        <div class="swiper product-slider">
+        <div class="product-slider">
 
-            <div class="swiper-wrapper">
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-1.png" %}" alt="">
-                    <h3>fresh potato</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
+                {% for product in products %}
+
+                    <div class="box col-md-3">
+                        <img src="media/{{ product.image }}" alt="">
+                        <a href="{{ product.slug }}"><h3>{{ product.name }}</h3></a>
+                        <div class="price"> ${{ product.price }}</div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <a href="{% url "product:add_product_to_checkout" product.id %}" class="btn">add to cart</a>
                 </div>
-
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-3.png" %}" alt="">
-                    <h3>fresh avocado</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-2.png" %}" alt="">
-                    <h3>fresh carrot</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-4.png" %}" alt="">
-                    <h3>green lemon</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-
-            </div>
-
+                {% endfor %}
         </div>
 
-        <div class="swiper product-slider">
-
-            <div class="swiper-wrapper">
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-5.png" %}" alt="">
-                    <h3>fresh potato</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-6.png" %}" alt="">
-                    <h3>fresh avocado</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-7.png" %}" alt="">
-                    <h3>fresh carrot</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-8.png" %}" alt="">
-                    <h3>green lemon</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-            </div>
-
-        </div>
-
-
-    </section>
-
-    <section class="products" id="products">
-
-        <div class="swiper product-slider">
-
-            <div class="swiper-wrapper">
-
-                <div class="swiper-wrapper">
-
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-1.png" %}" alt="">
-                    <h3>fresh orange</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-2.png" %}" alt="">
-                    <h3>fresh onion</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-3.png" %}" alt="">
-                    <h3>fresh meat</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-4.png" %}" alt="">
-                    <h3>fresh cabbage</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-
-            </div>
-
-            </div>
-
-        </div>
-
-        <div class="swiper product-slider">
-
-            <div class="swiper-wrapper">
-
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-5.png" %}" alt="">
-                    <h3>fresh potato</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-6.png" %}" alt="">
-                    <h3>fresh avocado</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-7.png" %}" alt="">
-                    <h3>fresh carrot</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-8.png" %}" alt="">
-                    <h3>green lemon</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-
-            </div>
-
-        </div>
-
-
-    </section>
-
-    <section class="products" id="products">
-
-        <div class="swiper product-slider">
-
-            <div class="swiper-wrapper">
-
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-1.png" %}" alt="">
-                    <h3>fresh orange</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-2.png" %}" alt="">
-                    <h3>fresh onion</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-3.png" %}" alt="">
-                    <h3>fresh meat</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-4.png" %}" alt="">
-                    <h3>fresh cabbage</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="swiper product-slider">
-
-            <div class="swiper-wrapper">
-
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-5.png" %}" alt="">
-                    <h3>fresh potato</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-6.png" %}" alt="">
-                    <h3>fresh avocado</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-7.png" %}" alt="">
-                    <h3>fresh carrot</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-8.png" %}" alt="">
-                    <h3>green lemon</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-
-            </div>
-
-        </div>
-
-
-    </section>
-
-    <section class="products" id="products">
-
-        <div class="swiper product-slider">
-
-            <div class="swiper-wrapper">
-
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-1.png" %}" alt="">
-                    <h3>fresh potato</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-2.png" %}" alt="">
-                    <h3>fresh avocado</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-3.png" %}" alt="">
-                    <h3>fresh carrot</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-4.png" %}" alt="">
-                    <h3>green lemon</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="swiper product-slider">
-
-            <div class="swiper-wrapper">
-
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-5.png" %}" alt="">
-                    <h3>fresh potato</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-6.png" %}" alt="">
-                    <h3>fresh avocado</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-7.png" %}" alt="">
-                    <h3>fresh carrot</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-
-                <div class="swiper-slide box">
-                    <img src="{% static "images/product-8.png" %}" alt="">
-                    <h3>green lemon</h3>
-                    <div class="price"> $4.99/- - 10.99/- </div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-
-            </div>
-
-        </div>
 
 
     </section>
@@ -627,7 +121,7 @@
         <div class="box-container">
 
             <div class="box">
-                <h3> groco <i class="fas fa-shopping-basket"></i> </h3>
+                <h3> groco <i class="fas fa-shopping-basket"></i></h3>
                 <p>We have organic food knowledge! #organicfoodknowledge</p>
                 <div class="share">
                     <a href="#" class="fab fa-facebook-f"></a>
@@ -648,7 +142,8 @@
             <div class="box">
                 <h3>quick links</h3>
                 <a href="{% url 'landing' %}" class="links"> <i class="fas fa-arrow-right"></i> home </a>
-                <a href="{% url 'product:all_products' %}" class="links"> <i class="fas fa-arrow-right"></i> products </a>
+                <a href="{% url 'product:all_products' %}" class="links"> <i class="fas fa-arrow-right"></i> products
+                </a>
                 <a href="{% url 'landing' %}#review" class="links"> <i class="fas fa-arrow-right"></i> review </a>
                 <a href="{% url 'landing' %}#blogs" class="links"> <i class="fas fa-arrow-right"></i> blogs </a>
             </div>
@@ -663,10 +158,10 @@
 
         </div>
 
-        <div class="credit"> created by <span> FCAI STUDENTS</span> | all rights reserved </div>
+        <div class="credit"> created by <span> FCAI STUDENTS</span> | all rights reserved</div>
 
     </section>
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
     <script src="{% static "js/main.js" %}"></script>
 
-    {% endblock content %}
+{% endblock content %}

@@ -39,7 +39,8 @@ class Brand(models.Model):
 
     def get_absolute_url(self):
         return reverse_lazy("dashboard:brand_dashboard:create_brand")
-    
+
+
 class Product(models.Model):
     name = models.CharField(max_length=225)
     description = models.TextField()
@@ -47,9 +48,11 @@ class Product(models.Model):
     weight = models.FloatField()
     sku = models.CharField(max_length=30, unique=True)
     stock = models.PositiveBigIntegerField()
-    brand = models.ForeignKey('Brand', on_delete=models.CASCADE,null=True)
+    brand = models.ForeignKey('Brand', on_delete=models.CASCADE, null=True)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="product images", blank=True)
     rate = models.Avg()
+    slug = models.SlugField(max_length=40)
 
     def __str__(self):
         return self.name
@@ -58,9 +61,4 @@ class Product(models.Model):
         return reverse_lazy('dashboard:product_dashboard:product_list')
 
     def get_thumbnail(self):
-        return self.productimage_set
-
-class ProductImage(models.Model):
-    image = models.ImageField()
-    product = models.ForeignKey('Product', on_delete=models.CASCADE)
-    alt = models.CharField(max_length=225)
+        return self.image

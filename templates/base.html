@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<title>Complete Responsive Grocery Website Design Tutorial</title>
+<title>{% block title %} Groco {% endblock %}</title>
 
 
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
@@ -26,7 +26,7 @@
 
 
     <!-- header section starts  -->
-
+{% comment %}
     <header class="header">
 
         <a href="#" class="logo"> <i class="fas fa-shopping-basket"></i> groco </a>
@@ -86,16 +86,14 @@
 
 
     </header>
+{% endcomment %}
+    <section class="products" id="products">
 
-<div>
-<br>
-<br>
-    {% block content %}
-    {% endblock %}
+        {% block content %}
+        {% endblock %}
 
-</div>
-
-    <section class="footer">
+    </section>
+<section class="footer">
 
         <div class="box-container">
 
@@ -142,11 +140,10 @@
 
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
-
-    <script src="main.js"></script>
     {% block js %}
 
     {% endblock %}
-    <script src="{% url 'js/script.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>

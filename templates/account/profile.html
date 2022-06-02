@@ -31,7 +31,7 @@
         {% if profile_form.avatar.value == '' %}
             <img class="photo" src="{% static "images/default-avatar.png" %}" alt="">
         {% else %}
-            <img class="photo" src="{{ profile_form.avatar.value }}" alt="">
+            <img class="photo" src="/media/{{ profile_form.avatar.value }}" alt="">
         {% endif %}
         <div class="parent-div">
             {{ profile_form.avatar }}
